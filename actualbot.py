@@ -25,7 +25,7 @@ def get_prefix(client, message):
     return prefixes[str(message.guild.id)]
 
 
-client = commands.Bot(command_prefix=get_prefix)
+client = commands.Bot(command_prefix=get_prefix,help_command=commands.MinimalHelpCommand())
 
 card1series = ""
 card1char = ""
@@ -485,7 +485,10 @@ async def view(ctx, *, unique):
     embed.set_image(url=f"attachment://{uniquecard[0][5]}")
 
     await ctx.send(embed=embed, file=file)
-
+    
+@view.error
+async def view_error(ctx, error):
+    await ctx.send("The code is case sensitive. Please enter the right code.")
 
 @client.command()
 async def myinv(ctx):
