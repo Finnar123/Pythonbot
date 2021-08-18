@@ -13,6 +13,7 @@ import json
 from discord.ext.commands.core import has_permissions
 from discord.utils import find
 from discord.ext.commands.errors import CheckFailure, CommandOnCooldown
+import os
 
 #client = commands.Bot(command_prefix=".")
 
@@ -281,7 +282,7 @@ async def invite(ctx):
 async def on_ready():
 
     print("Bot is ready.")
-    print("Make sure to set a channel everytime bot is run.")
+    print(os.getcwd())
 
 
 @client.event
